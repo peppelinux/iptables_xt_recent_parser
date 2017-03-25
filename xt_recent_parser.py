@@ -150,8 +150,7 @@ class XtRecentRow(object):
         if debug: 
             print(d)
             print(self.history)
-            print('')
-        
+    
     def convert_jiffies(self, strftime_format='%Y-%m-%d %H:%M:%S'):
         d = copy(self)
         
@@ -193,7 +192,7 @@ class XtRecentTable(object):
                 if debug:
                     for e in row_dt.history:
                         print(r)
-                print('')
+                
         
     
     def view(self):
@@ -202,6 +201,6 @@ class XtRecentTable(object):
 
 if __name__ == '__main__':
     print('XT_RECENT python parser\n<giuseppe.demarco@unical.it>\n\n')
-    xt = XtRecentTable()
+    xt = XtRecentTable(fpath="/proc/net/xt_recent/sshguys")
     xt.parse()
 
