@@ -200,7 +200,7 @@ class XtRecentTable(object):
 
 
 if __name__ == '__main__':
-    print('XT_RECENT python parser\n<giuseppe.demarco@unical.it>\n\n')
+    print('XT_RECENT python parser\n<giuseppe.demarco@unical.it>\n')
     xt = XtRecentTable(fpath="/proc/net/xt_recent/sshguys")
     xt.parse()
 
