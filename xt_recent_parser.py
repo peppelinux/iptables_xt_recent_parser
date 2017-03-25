@@ -1,4 +1,4 @@
-#~ Copyright 2017 Giuseppe De Marco
+#~ Copyright 2017 Giuseppe De Marco <giuseppe.demarco@unical.it>
 #~ 
 #~ Permission is hereby granted, free of charge, to any person obtaining a 
 #~ copy of this software and associated documentation files (the "Software"), 
@@ -201,7 +201,7 @@ class XtRecentTable(object):
 
 
 if __name__ == '__main__':
-    print('XT_RECENT python parser\n')
+    print('XT_RECENT python parser\n<giuseppe.demarco@unical.it>\n\n')
     xt = XtRecentTable(fpath='/proc/net/xt_recent/sshguys')
     xt.parse()
 
