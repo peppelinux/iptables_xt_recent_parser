@@ -31,3 +31,9 @@ XT_RECENT python parser
 177.12.84.234, last seen: 2017-03-25 16:22:14 after 17 Connections 
 
 ````
+
+Mind to edit the xt_recent file path first:
+
+````
+xt = XtRecentTable(fpath="/proc/net/xt_recent/sshguys")
+````
