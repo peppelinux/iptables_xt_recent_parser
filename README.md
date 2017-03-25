@@ -16,4 +16,22 @@ $IPT -A INPUT -p tcp --dport $SSH_PORT -m state --state NEW,ESTABLISHED -m recen
 
 It only needs Python3:
 
-python3 xt_recent_parser.py
+````
+root@cloudone-cla:~/xt_recent_parser# python3 xt_recent_parser.py 
+XT_RECENT python parser
+<giuseppe.demarco@unical.it>
+
+
+114.241.108.160, last seen: 2017-03-25 18:21:42 after 13 Connections 
+
+46.165.210.17, last seen: 2017-03-25 13:07:54 after 10 Connections 
+
+61.53.219.162, last seen: 2017-03-25 17:39:17 after 20 Connections 
+
+179.37.141.232, last seen: 2017-03-25 18:08:23 after 2 Connections 
+
+114.42.117.39, last seen: 2017-03-25 13:22:14 after 18 Connections 
+
+177.12.84.234, last seen: 2017-03-25 16:22:14 after 17 Connections 
+
+````
