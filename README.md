@@ -32,7 +32,7 @@ XT_RECENT python parser
 
 ````
 
-Mind to edit the xt_recent file path first:
+Keep in mind to edit the xt_recent file path first:
 
 ````
 xt = XtRecentTable(fpath="/proc/net/xt_recent/sshguys")
