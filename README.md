@@ -20,14 +20,10 @@ $IPT -A INPUT -p tcp -m tcp --dport $SSH_PORT -m recent --update --seconds $SECO
 $IPT -A INPUT -p tcp -m tcp --dport $SSH_PORT -m state --state NEW,ESTABLISHED  -j ACCEPT
 ````
 
-In syslog we can read:
+In syslog we can see blocked connections :
 
 ````
 Mar 26 14:06:41 cloudone-cla kernel: [5339977.637052] BLOCKED SSH (brute force)IN=eth0 OUT= MAC=00:50:56:92:00:04:00:14:c2:61:09:be:08:00 SRC=95.142.177.153 DST=160.97.104.18 LEN=60 TOS=0x00 PREC=0x00 TTL=50 ID=42489 DF PROTO=TCP SPT=44636 DPT=22 WINDOW=29200 RES=0x00 SYN URGP=0 
-
-# and
-
-Mar 26 14:00:53 cloudone-cla kernel: [5339629.678933] incoming SSH CONNECTION IN=eth0 OUT= MAC=00:50:56:92:00:04:00:14:c2:61:09:be:08:00 SRC=95.142.177.153 DST=160.97.104.18 LEN=60 TOS=0x00 PREC=0x00 TTL=50 ID=31613 DF PROTO=TCP SPT=44564 DPT=22 WINDOW=29200 RES=0x00 SYN URGP=0 
 ````
 
 It only needs Python3:
