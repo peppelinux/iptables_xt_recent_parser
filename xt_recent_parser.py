@@ -26,7 +26,7 @@ import os
 import subprocess
 
 _debug = False
-_fpath = '/proc/net/xt_recent/DEFAULT'
+_fpath = '/proc/net/xt_recent/sshguys'
 _kernel_config_path = '/boot/config-'+subprocess.getoutput(['uname -r']) 
 _datetime_format = '%Y-%m-%d %H:%M:%S'
     
@@ -215,7 +215,7 @@ class XtRecentTable(object):
     
     def csv(self):
         self.parse()
-        print(';'.join(('ip_src','last_seen','connections','deltas')))
+        print(';'.join(('ip_src','last_seen','connections','deltas_mean', 'delta_seconds')))
         for row in self.xt_recent:
             deltas = []
             dt_cnt = 1
@@ -230,13 +230,15 @@ class XtRecentTable(object):
                         pass
                     dt_cnt += 1
             
+            d_mean = sum([ d.seconds for d in deltas]) / len(deltas)
             
             print( ';'.join(
                             (
                              row.src, 
                              str(row.last_seen), 
                              str(len(row.history)), 
-                             '\n'.join([ str(d.seconds) for d in deltas])
+                             str(d_mean),
+                             ','.join([ str(d.seconds) for d in deltas])
                              )
                              ) 
                             )
