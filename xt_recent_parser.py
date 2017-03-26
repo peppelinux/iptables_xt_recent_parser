@@ -192,6 +192,7 @@ class XtRecentTable(object):
     def parse(self, debug=False):
         # flush it first
         self.rows = []
+        self.xt_recent = []
         with open(self.fpath) as f:
             self.rows = f.readlines()
         for i in self.rows:
