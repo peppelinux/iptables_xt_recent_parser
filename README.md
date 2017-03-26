@@ -2,7 +2,7 @@
 Tool used for converting jiffies from iptables xt_recent timestamps.
 These timestamps was produced by iptables recent logging action.
 
-An example of ssh recent activity can be like this, where only 7 login attemps in 30 seconds are permitted:
+An example of ssh recent activity can be like this, where only 3 syn connections in 20 seconds are allowed:
 
 ````
 export IPT=iptables
