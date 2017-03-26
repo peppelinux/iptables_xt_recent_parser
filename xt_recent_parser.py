@@ -26,7 +26,7 @@ import os
 import subprocess
 
 _debug = False
-_fpath = '/proc/net/xt_recent/sshguys'
+_fpath = '/proc/net/xt_recent/DEFAULT'
 _kernel_config_path = '/boot/config-'+subprocess.getoutput(['uname -r']) 
 _datetime_format = '%Y-%m-%d %H:%M:%S'
     
@@ -230,7 +230,10 @@ class XtRecentTable(object):
                         pass
                     dt_cnt += 1
             
-            d_mean = sum([ d.seconds for d in deltas]) / len(deltas)
+            if len(deltas):
+                d_mean = sum([ d.seconds for d in deltas]) / len(deltas)
+            else:
+                d_mean = 0
             
             print( ';'.join(
                             (
