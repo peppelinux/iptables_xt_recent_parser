@@ -47,8 +47,9 @@ ip_src;last_seen;connections;deltas_mean;delta_seconds
 
 ````
 
-In CSV format there will be available time delta mean and time deltas in seconds for every attempts
-Keep in mind to edit the xt_recent file path first:
+In CSV format there will be available time delta mean and time deltas in seconds for every attempts.
+
+Pelase remember to edit the xt_recent file path to make it works as desidered:
 
 ````
 # at the begin of xt_recent_parser.py
