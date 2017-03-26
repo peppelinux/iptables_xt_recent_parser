@@ -44,5 +44,9 @@ In CSV format there will be available time delta mean and time deltas in seconds
 Keep in mind to edit the xt_recent file path first:
 
 ````
+# at the begin of xt_recent_parser.py
+_fpath = '/proc/net/xt_recent/DEFAULT'
+
+# or in object creatuion:
 xt = XtRecentTable(fpath="/proc/net/xt_recent/sshguys")
 ````
