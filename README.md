@@ -55,6 +55,6 @@ Pelase remember to edit the xt_recent file path to make it works as desidered:
 # at the begin of xt_recent_parser.py
 _fpath = '/proc/net/xt_recent/sshguys'
 
-# or in object creatuion:
+# or in object creation:
 xt = XtRecentTable(fpath="/proc/net/xt_recent/sshguys")
 ````
