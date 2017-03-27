@@ -167,6 +167,10 @@ class XtRecentRow(object):
             print('')
         
     def convert_jiffies(self):
+        """
+        converts jiffies value in datetime object
+        then returns a copy of self with all the jiffies converted
+        """
         d = copy(self)
         jt = JiffyTimeConverter()
         d.last_seen = jt.datetime(d.last_seen)
@@ -176,6 +180,10 @@ class XtRecentRow(object):
         return d
 
     def format_jiffies(self, strftime_format=_datetime_format):
+        """
+        displays datetime values in a preferred datetime string format
+        returns a copy of the object
+        """
         d = self.convert_jiffies()
         jt = JiffyTimeConverter()
         
@@ -200,6 +208,10 @@ class XtRecentTable(object):
         self.rows      = []
         
     def parse(self, debug=False):
+        """
+        do parse of xt_recent file
+        for every row it create a XtRecentRow object
+        """
         # flush it first
         self.rows = []
         self.xt_recent = []
@@ -256,6 +268,10 @@ class XtRecentTable(object):
                              ) 
                             )
     def view(self):
+        """
+        prints in stdout the XtRecentRow object's representation
+        for all the rows in xt_recent
+        """
         self.parse()
         for row in self.xt_recent:
             print(row)
