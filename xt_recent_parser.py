@@ -73,17 +73,22 @@ class JiffyTimeConverter(object):
     
     @staticmethod
     def system_uptime():
+        """
+        returns system uptime in seconds
+        """
         from datetime import timedelta
         
         with open('/proc/uptime', 'r') as f:
             uptime_seconds = float(f.readline().split()[0])
             uptime_string = str(timedelta(seconds = uptime_seconds))
         
-        print(uptime_string)
         return uptime_seconds
     
     @staticmethod
     def system_jiffies():
+        """
+        returns current system jiffies
+        """
         _jiffies_pattern = r'(?:jiffies[ =:]*?)([0-9]+)'
         
         with open('/proc/timer_list') as f:
