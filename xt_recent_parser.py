@@ -52,6 +52,11 @@ class JiffyTimeConverter(object):
     
     @staticmethod
     def check_system_jiffies():
+        """
+        It only prints 12 times how many jiffies runs in a second
+        If kernel's CONFIG_HZ is 250 there will be 250 jiffies in a second
+        It's funny to see that sometimes this value gets some oscillations (251,250,250,251...)
+        """
         last_jiffies = 0
         hz = 0
         cnt = 0
