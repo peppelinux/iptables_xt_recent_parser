@@ -1,8 +1,7 @@
 # xt_recent_parser
-Tool used for converting jiffies from iptables xt_recent timestamps.
-These timestamps was produced by iptables recent logging action.
+Tool used for converting jiffies from iptables xt_recent into timestamps.
 
-An example of ssh recent activity can be like this, where only 3 syn connections in 20 seconds are allowed:
+An example of xt_recent log can be like this, where only 2 syn connections in 20 seconds are allowed:
 
 ````
 export IPT=iptables
