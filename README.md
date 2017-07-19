@@ -6,8 +6,9 @@ An example of xt_recent log can be like this, where only 2 syn connections in 20
 ````
 export IPT=iptables
 export SSH_PORT=22
-export SECONDS=20
-export HITCOUNT=3
+export HITCOUNT=3 # 2 syn connection (<3)
+export SECONDS=20 # in 20 seconds are allowed
+
 
 # --rcheck: Check if the source address of the packet is  currently  in  the list.
 # --update: Like  --rcheck,  except it will update the "last seen" timestamp if it matches.
