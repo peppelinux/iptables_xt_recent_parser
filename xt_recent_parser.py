@@ -288,7 +288,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     
     # By default it will fail with multiple arguments.
-    parser.add_argument('--default')
+    #~ parser.add_argument('--default')
     
     # This is the correct way to handle accepting multiple arguments.
     # '+' == 1 or more.
