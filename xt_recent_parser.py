@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 #~ Copyright 2017 Giuseppe De Marco <giuseppe.demarco@unical.it>
 #~ 
 #~ Permission is hereby granted, free of charge, to any person obtaining a 
