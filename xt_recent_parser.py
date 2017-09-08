@@ -280,7 +280,7 @@ class XtRecentTable(object):
 
 
 if __name__ == '__main__':
-    print('XT_RECENT python parser\n<giuseppe.demarco@unical.it>\n')
+    print('XT_RECENT python parser\n<giuseppe.demarco@unical.it>')
     # if ssh iptables example was used you should have to replace/overload  _fpath with
     # _fpath = '/proc/net/xt_recent/sshguys'
     
