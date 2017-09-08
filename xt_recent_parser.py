@@ -281,8 +281,34 @@ if __name__ == '__main__':
     print('XT_RECENT python parser\n<giuseppe.demarco@unical.it>\n\n')
     # if ssh iptables example was used you should have to replace/overload  _fpath with
     # _fpath = '/proc/net/xt_recent/sshguys'
+    
+    import argparse
+    parser = argparse.ArgumentParser()
+    
+    # By default it will fail with multiple arguments.
+    parser.add_argument('--default')
+    
+    # This is the correct way to handle accepting multiple arguments.
+    # '+' == 1 or more.
+    # '*' == 0 or more.
+    # '?' == 0 or 1.
+    # An int is an explicit number of arguments to accept.
+    parser.add_argument('-f', nargs='+', help="custom xt_recent path, default if omitted is: /proc/net/xt_recent/DEFAULT")
+    parser.add_argument('-txt', action="store_true", help="print it in human readable format")
+    parser.add_argument('-csv', action="store_true", help="print it in CSV format")
+    #~ parser.add_argument('-h', action="store_true", required=0)    
+    args = parser.parse_args()
+    
+    #~ if args.h:
+        #~ print(HELP)
+    
+    if args.f:    
+        _fpath = args.f
+    
     xt = XtRecentTable(fpath=_fpath)
-    print('Standard readable view:')
-    xt.view()
-    print('\nCSV view:')
-    xt.csv()
+    
+    if args.txt:
+        xt.view()
+
+    if args.csv:
+        xt.csv()
