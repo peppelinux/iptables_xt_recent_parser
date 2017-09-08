@@ -314,3 +314,7 @@ if __name__ == '__main__':
 
     if args.csv:
         xt.csv()
+
+    if len(sys.argv)==1:
+        parser.print_help()
+        sys.exit(1)
