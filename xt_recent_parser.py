@@ -301,9 +301,15 @@ if __name__ == '__main__':
     #~ parser.add_argument('-h', action="store_true", required=0)    
     args = parser.parse_args()
 
+    if len(sys.argv)==1:
+        parser.print_help()
+        sys.exit(1)
+
     if args.f:    
         _fpath = args.f
-
+    
+    print('Parsing file: {}'.format(_fpath))
+    
     xt = XtRecentTable(fpath=_fpath)
 
     if args.txt:
@@ -311,7 +317,3 @@ if __name__ == '__main__':
 
     if args.csv:
         xt.csv()
-
-    if len(sys.argv)==1:
-        parser.print_help()
-        sys.exit(1)
