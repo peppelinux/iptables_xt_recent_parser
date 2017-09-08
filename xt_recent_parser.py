@@ -280,7 +280,7 @@ class XtRecentTable(object):
 
 
 if __name__ == '__main__':
-    print('XT_RECENT python parser\n<giuseppe.demarco@unical.it>')
+    print('XT_RECENT python parser\n<giuseppe.demarco@unical.it>\n')
     # if ssh iptables example was used you should have to replace/overload  _fpath with
     # _fpath = '/proc/net/xt_recent/sshguys'
     
@@ -300,15 +300,12 @@ if __name__ == '__main__':
     parser.add_argument('-csv', action="store_true", help="print it in CSV format")
     #~ parser.add_argument('-h', action="store_true", required=0)    
     args = parser.parse_args()
-    
-    #~ if args.h:
-        #~ print(HELP)
-    
+
     if args.f:    
         _fpath = args.f
-    
+
     xt = XtRecentTable(fpath=_fpath)
-    
+
     if args.txt:
         xt.view()
 
