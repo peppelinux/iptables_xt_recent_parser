@@ -31,7 +31,8 @@ _debug = False
 _fpath = '/proc/net/xt_recent/DEFAULT'
 _kernel_config_path = '/boot/config-'+subprocess.getoutput(['uname -r']) 
 _datetime_format = '%Y-%m-%d %H:%M:%S'
-    
+
+
 class JiffyTimeConverter(object):
     def __init__(self, kernel_config_path=_kernel_config_path):
         
@@ -136,11 +137,10 @@ class JiffyTimeConverter(object):
 class XtRecentRow(object):
     def __init__(self, row, debug=False):
         """
-            where row is:
-            src=151.54.175.212 ttl: 49 last_seen: 5610057758 
-            oldest_pkt: 11 5610048214, 5610048235, 5610048281, [...]
+        where row is:
+        src=151.54.175.212 ttl: 49 last_seen: 5610057758 
+        oldest_pkt: 11 5610048214, 5610048235, 5610048281, [...]
         """
-        
         # regexp
         _src_pattern = r'(?:src\=)(?P<src>[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})'
         _ttl_pattern = r'(?:ttl\:\ )(?P<ttl>[0-9]+)'
@@ -149,7 +149,6 @@ class XtRecentRow(object):
         _oldest_pkt_pattern = r'(?:oldest_pkt\:\ )(?P<oldest_pkt>[0-9]+)'
         _timestamps_pattern = r'(?:oldest_pkt\:\ [0-9]*)(?P<timestamps>[0-9 ,]+)'
         #
-        
         d = {}
         d.update(re.search( _src_pattern, row ).groupdict())
         #~ self.hitcount   = d.update(re.search( _hitcount_pattern, row ).groupdict())
@@ -159,7 +158,6 @@ class XtRecentRow(object):
         
         for i in d:
             setattr(self, i, d[i])
-        
         self.raw_history    = re.search( _timestamps_pattern, row ).groups()[0] #.replace(' ', '').split(',')
         self.history = [ i.strip() for i in self.raw_history.split(',')]
         
@@ -225,17 +223,14 @@ class XtRecentTable(object):
                     print('Parsing: %s' % i.replace('\n', ''))
                 row = XtRecentRow(i, debug=_debug)
                 row_dt = row.convert_jiffies()
-                
                 # raw datetime in jiffies format!
                 # self.xt_recent.append( row )            
-                
                 # datetime format
                 self.xt_recent.append( row_dt )                
                 if debug:
                     print(row_dt)                    
                     for e in row_dt.history:
                         print(r)
-        
     
     def csv(self):
         self.parse()
@@ -259,16 +254,13 @@ class XtRecentTable(object):
             else:
                 d_mean = 0
             
-            print( ';'.join(
-                            (
-                             row.src, 
-                             str(row.last_seen), 
-                             str(len(row.history)), 
-                             str(d_mean),
-                             ','.join([ str(d.seconds) for d in deltas])
-                             )
-                             ) 
-                            )
+            prow = (row.src, 
+                    str(row.last_seen), 
+                    str(len(row.history)), 
+                    str(d_mean),
+                    ','.join([ str(d.seconds) for d in deltas]))
+            print( ';'.join(prow))
+
     def view(self):
         """
         prints in stdout the XtRecentRow object's representation
@@ -281,24 +273,15 @@ class XtRecentTable(object):
 
 if __name__ == '__main__':
     print('XT_RECENT python parser\n<giuseppe.demarco@unical.it>\n')
-    # if ssh iptables example was used you should have to replace/overload  _fpath with
-    # _fpath = '/proc/net/xt_recent/sshguys'
-    
     import argparse
     parser = argparse.ArgumentParser()
-    
-    # By default it will fail with multiple arguments.
-    #~ parser.add_argument('--default')
-    
-    # This is the correct way to handle accepting multiple arguments.
-    # '+' == 1 or more.
-    # '*' == 0 or more.
-    # '?' == 0 or 1.
+
     # An int is an explicit number of arguments to accept.
-    parser.add_argument('-f', nargs='+', help="custom xt_recent path, default if omitted is: /proc/net/xt_recent/DEFAULT")
+    parser.add_argument('-f', required=False,
+                        default=_fpath,
+                        help="custom xt_recent path, default if omitted is: /proc/net/xt_recent/DEFAULT")
     parser.add_argument('-txt', action="store_true", help="print it in human readable format")
     parser.add_argument('-csv', action="store_true", help="print it in CSV format")
-    #~ parser.add_argument('-h', action="store_true", required=0)    
     args = parser.parse_args()
 
     if len(sys.argv)==1:
