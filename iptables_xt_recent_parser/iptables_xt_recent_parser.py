@@ -277,7 +277,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     # An int is an explicit number of arguments to accept.
-    parser.add_argument('-f', nargs='+', help="custom xt_recent path, default if omitted is: /proc/net/xt_recent/DEFAULT")
+    parser.add_argument('-f', required=False,
+                        default=_fpath,
+                        help="custom xt_recent path, default if omitted is: /proc/net/xt_recent/DEFAULT")
     parser.add_argument('-txt', action="store_true", help="print it in human readable format")
     parser.add_argument('-csv', action="store_true", help="print it in CSV format")
     args = parser.parse_args()
