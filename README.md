@@ -1,5 +1,5 @@
-# xt_recent_parser
-Tool used for converting jiffies from iptables xt_recent into timestamps.
+# iptables_xt_recent_parser
+Used for converting jiffies from iptables xt_recent into timestamps.
 
 An example of xt_recent log can be like this, where only 2 syn connections in 20 seconds are allowed:
 
@@ -26,14 +26,23 @@ In syslog we can see blocked connections :
 Mar 26 14:06:41 cloudone-cla kernel: [5339977.637052] BLOCKED SSH (brute force)IN=eth0 OUT= MAC=00:50:56:92:00:04:00:14:c2:61:09:be:08:00 SRC=95.142.177.153 DST=160.97.104.18 LEN=60 TOS=0x00 PREC=0x00 TTL=50 ID=42489 DF PROTO=TCP SPT=44636 DPT=22 WINDOW=29200 RES=0x00 SYN URGP=0 
 ````
 
-It only needs Python3:
-
+## Usage
 ````
-root@cloudone-cla:~/xt_recent_parser# python3 xt_recent_parser.py 
 XT_RECENT python parser
 <giuseppe.demarco@unical.it>
 
+usage: iptables_xt_recent_parser.py [-h] [-f F] [-txt] [-csv]
 
+optional arguments:
+  -h, --help  show this help message and exit
+  -f F        custom xt_recent path, default if omitted is:
+              /proc/net/xt_recent/DEFAULT
+  -txt        print it in human readable format
+  -csv        print it in CSV format
+````
+
+## Output
+````
 Standard readable view:
 190.102.72.44, last seen: 2017-03-26 13:31:55 after 1 connections
 187.112.185.153, last seen: 2017-03-26 13:28:07 after 2 connections
@@ -48,3 +57,7 @@ ip_src;last_seen;connections;deltas_mean;delta_seconds
 ````
 
 In CSV format there are time delta mean and time delta in seconds, for every attempts.
+
+## Requirements
+
+- Python3
