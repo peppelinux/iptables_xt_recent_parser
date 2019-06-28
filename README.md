@@ -26,7 +26,7 @@ In syslog we can see blocked connections :
 Mar 26 14:06:41 cloudone-cla kernel: [5339977.637052] BLOCKED SSH (brute force)IN=eth0 OUT= MAC=00:50:56:92:00:04:00:14:c2:61:09:be:08:00 SRC=95.142.177.153 DST=160.97.104.18 LEN=60 TOS=0x00 PREC=0x00 TTL=50 ID=42489 DF PROTO=TCP SPT=44636 DPT=22 WINDOW=29200 RES=0x00 SYN URGP=0 
 ````
 
-## Usage
+### Usage
 ````
 XT_RECENT python parser
 <giuseppe.demarco@unical.it>
@@ -41,7 +41,7 @@ optional arguments:
   -csv        print it in CSV format
 ````
 
-## Output
+### Output
 ````
 Standard readable view:
 190.102.72.44, last seen: 2017-03-26 13:31:55 after 1 connections
@@ -58,6 +58,6 @@ ip_src;last_seen;connections;deltas_mean;delta_seconds
 
 In CSV format there are time delta mean and time delta in seconds, for every attempts.
 
-## Requirements
+### Requirements
 
 - Python3
