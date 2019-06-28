@@ -47,14 +47,4 @@ ip_src;last_seen;connections;deltas_mean;delta_seconds
 
 ````
 
-In CSV format there will be available time delta mean and time deltas in seconds for every attempt.
-
-Pelase remember to edit the xt_recent file path to make it works as desidered:
-
-````
-# at the begin of xt_recent_parser.py
-_fpath = '/proc/net/xt_recent/sshguys'
-
-# or in object creation:
-xt = XtRecentTable(fpath="/proc/net/xt_recent/sshguys")
-````
+In CSV format there are time delta mean and time delta in seconds, for every attempts.
