@@ -220,7 +220,7 @@ class XtRecentTable(object):
         for i in self.rows:
             if i.strip():
                 if debug:
-                    print('Parsing: %s' % i.replace('\n', ''))
+                    print('Parsing: %s' % i.replace('\n', ''), file=sys.stderr)
                 row = XtRecentRow(i, debug=_debug)
                 row_dt = row.convert_jiffies()
                 # raw datetime in jiffies format!
@@ -272,7 +272,7 @@ class XtRecentTable(object):
 
 
 if __name__ == '__main__':
-    print('XT_RECENT python parser\n<giuseppe.demarco@unical.it>\n')
+    print('XT_RECENT python parser\n<giuseppe.demarco@unical.it>\n', file=sys.stderr)
     import argparse
     parser = argparse.ArgumentParser()
 
