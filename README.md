@@ -23,7 +23,7 @@ $IPT -A INPUT -p tcp -m tcp --dport $SSH_PORT -m state --state NEW,ESTABLISHED  
 In syslog we can see blocked connections :
 
 ````
-Mar 26 14:06:41 cloudone-cla kernel: [5339977.637052] BLOCKED SSH (brute force)IN=eth0 OUT= MAC=00:50:56:92:00:04:00:14:c2:61:09:be:08:00 SRC=95.142.177.153 DST=160.97.104.18 LEN=60 TOS=0x00 PREC=0x00 TTL=50 ID=42489 DF PROTO=TCP SPT=44636 DPT=22 WINDOW=29200 RES=0x00 SYN URGP=0 
+Mar 26 14:06:41 cloudone-cla kernel: [5339977.637052] BLOCKED SSH (brute force)IN=eth0 OUT= MAC=00:50:56:92:00:04:00:14:c2:61:09:be:08:00 SRC=95.142.177.153 DST=160.97.104.18 LEN=60 TOS=0x00 PREC=0x00 TTL=50 ID=42489 DF PROTO=TCP SPT=44636 DPT=22 WINDOW=29200 RES=0x00 SYN URGP=0
 ````
 
 ### Usage
@@ -31,7 +31,7 @@ Mar 26 14:06:41 cloudone-cla kernel: [5339977.637052] BLOCKED SSH (brute force)I
 XT_RECENT python parser
 <giuseppe.demarco@unical.it>
 
-usage: iptables_xt_recent_parser.py [-h] [-f F] [-txt] [-csv]
+usage: ipt_recents [-h] [-f F] [-txt] [-csv]
 
 optional arguments:
   -h, --help  show this help message and exit

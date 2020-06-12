@@ -5,18 +5,19 @@ def readme():
         return f.read()
 
 setup(name='iptables_xt_recent_parser',
-      version='0.4',
-      description="Tool used for converting jiffies from iptables xt_recent into timestamps.",
+      version='0.6.0-1',
+      description=("Tool used for converting jiffies from iptables "
+                   "xt_recent into timestamps."),
       long_description=readme(),
+      long_description_content_type='text/markdown',
       classifiers=['Development Status :: 5 - Production/Stable',
-                  'License :: OSI Approved :: BSD License',
-                  'Programming Language :: Python :: 2',
-                  'Programming Language :: Python :: 3'],
+                   'License :: OSI Approved :: BSD License',
+                   'Programming Language :: Python :: 3'],
       url='https://github.com/peppelinux/iptables_xt_recent_parser',
       author='Giuseppe De Marco',
       author_email='giuseppe.demarco@unical.it',
       license='BSD',
-      scripts=['iptables_xt_recent_parser/iptables_xt_recent_parser.py'],
-      packages=['iptables_xt_recent_parser'],
+      scripts=['iptables_xt_recent_parser/ipt_recents'],
+      #packages=['iptables_xt_recent_parser'],
       install_requires=[],
      )
